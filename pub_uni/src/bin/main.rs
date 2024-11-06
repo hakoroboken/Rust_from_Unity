@@ -11,7 +11,7 @@ fn main() {
 
     let mut node = Node::new("Publisher".to_string());
 
-    let mut pu = node.create_publisher::<std_msgs::msg::Int32>("controller".to_string());
+    let mut pu = node.create_publisher::<std_msgs::msg::StringMsg>("controller".to_string());
 
     match UdpSocket::bind(RECV_ADDR) {
         Ok(sock) => {
@@ -31,14 +31,21 @@ fn main() {
 
                                 println!("DateDetail:");
                                 let indices = [2, 3, 0, 4, 5];
+
+                                let mut new_msg = std_msgs::msg::StringMsg::new();
+                                let mut msg_data = String::new();
+
                                 for &index in indices.iter() {
-                                    if index < numbers.len() as i32 {
-                                        let mut new_msg = std_msgs::msg::Int32::new();
-                                        println!("{}", numbers[index as usize]);
-                                        new_msg.data = numbers[index as usize];
-                                        pu.publish(new_msg);
+                                    if !msg_data.is_empty() {
+                                        msg_data.push(',');
                                     }
+                                    msg_data.push_str(&numbers[index as usize].to_string());
                                 }
+                                
+                                msg_data.push('e');
+                                println!("{}",msg_data);
+                                new_msg.data = msg_data;
+                                pu.publish(new_msg);
 
                                 // for num in numbers {
                                 //     let mut new_msg = std_msgs::msg::Int32::new();
