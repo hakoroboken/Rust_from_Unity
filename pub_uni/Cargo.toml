@@ -1,0 +1,8 @@
+[package]
+name = "pub_from_Unity"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fls = {git = "https://github.com/FlexLinkSystem/fls.git"}
+std_msgs = {git = "https://github.com/FlexLinkSystem/std_msgs.git"}
