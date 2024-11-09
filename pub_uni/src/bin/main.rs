@@ -30,7 +30,7 @@ fn main() {
                                     .collect();
 
                                 println!("DateDetail:");
-                                let indices = [1, 3, 4, 5];
+                                let indices = [2, 3, 0, 4, 5, 17, 15];
 
                                 let mut new_msg = std_msgs::msg::StringMsg::new();
                                 let mut msg_data = String::new();
