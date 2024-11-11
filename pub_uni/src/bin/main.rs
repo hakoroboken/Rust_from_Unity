@@ -8,7 +8,7 @@ const RECV_ADDR: &str = "127.0.0.1:64276";
 fn main() {
     let mut n = 0;
 
-    let mut port = serialport::new("/dev/ttyACM0", 115200)
+    let mut port = serialport::new("/dev/ttyUSB0", 115200)
         .timeout(std::time::Duration::from_millis(100))
         .open()
         .expect("Failed to open port");
@@ -30,7 +30,7 @@ fn main() {
                                     .collect();
 
                                 println!("DateDetail:");
-                                let indices = [1, 3, 4, 5];
+                                let indices = [3, 1, 4];
                                 let mut msg_data = String::new();
 
                                 for &index in indices.iter() {
