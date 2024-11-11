@@ -1,4 +1,5 @@
 //20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20
+//Tsuna
 
 use std::net::UdpSocket;
 use serialport;
@@ -31,6 +32,7 @@ fn main() {
 
                                 println!("DateDetail:");
                                 let indices = [3, 1, 4];
+                                
                                 let mut msg_data = String::new();
 
                                 for &index in indices.iter() {
@@ -39,7 +41,7 @@ fn main() {
                                     }
                                     msg_data.push_str(&numbers[index as usize].to_string());
                                 }
-                                msg_data.push('e');
+                                msg_data.push_str(",20e");
                                 
                                 match port.write(msg_data.as_bytes()) {
                                     Ok(_)=>{
